@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-      title: `Where is Basile?`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Where is Basile?`,
+    siteUrl: `https://whereis.ntag.fr`,
   },
-  plugins: ["gatsby-plugin-styled-components"]
+  plugins: ["gatsby-plugin-styled-components"],
 };
