@@ -16,5 +16,5 @@ export const Label = styled.div`
   top: calc(${({ $y }) => $y} - 2px);
   left: calc(${({ $x }) => $x} + 16px);
   color: white;
-  font-family: --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen;
+  font-weight: bold;
 `;

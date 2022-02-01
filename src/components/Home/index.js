@@ -11,7 +11,7 @@ const Home = ({ pageContext }) => {
     <S.Container>
       <S.ImageMap src={`data:image/svg+xml;utf8,${encodeURIComponent(svg)}`} />
       <S.Label $x={point.x} $y={point.y}>
-        Il est là ☺️
+        il est là 🤗
       </S.Label>
     </S.Container>
   );
