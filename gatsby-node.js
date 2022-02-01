@@ -1,7 +1,19 @@
 const path = require(`path`);
 const DottedMap = require("dotted-map").default;
 
-const CURRENT_LOCATION = [44.89, 6.64]; // lat, lng
+const CURRENT_LOCATION = [48.86, 2.34]; // lat, lng
+
+const getXYFromLatLng = ({ map, point }) => {
+  const { height, width } = map.image;
+
+  const originX = `max(0px, calc(0.5 * (100vh * ${width} / ${height} - 100vw)))`;
+  const originY = `max(0px, calc(0.5 * (100vw * ${height} / ${width} - 100vh)))`;
+
+  const x = `calc(max(100vw * ${point.x} / ${width}, 100vh * ${point.x} / ${height}) - ${originX})`;
+  const y = `calc(max(100vw * ${point.y} / ${width}, 100vh * ${point.y} / ${height}) - ${originY})`;
+
+  return { x, y };
+};
 
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions;
@@ -17,11 +29,13 @@ exports.createPages = async ({ actions }) => {
   });
 
   const [lat, lng] = CURRENT_LOCATION;
-  map.addPin({
+  const point = map.addPin({
     lat,
     lng,
     svgOptions: { color: "#fffcf2", radius: 0.4 },
   });
+
+  const { x, y } = getXYFromLatLng({ map, point });
 
   const svg = map.getSVG({
     radius: 0.22,
@@ -35,6 +49,7 @@ exports.createPages = async ({ actions }) => {
     component: Home,
     context: {
       svg,
+      point: { x, y },
     },
   });
 };
