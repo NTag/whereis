@@ -4,7 +4,6 @@ import "./index.css";
 import * as S from "./styles";
 
 const Home = ({ pageContext }) => {
-  console.log(pageContext);
   const { svg, point } = pageContext;
 
   return (
