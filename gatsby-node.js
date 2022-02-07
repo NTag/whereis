@@ -1,7 +1,7 @@
 const path = require(`path`);
 const DottedMap = require("dotted-map").default;
 
-const CURRENT_LOCATION = [49.3, -0.3033]; // lat, lng
+const CURRENT_LOCATION = [48.856614, 2.3522219]; // lat, lng
 
 const getXYFromLatLng = ({ map, point }) => {
   const { height, width } = map.image;
