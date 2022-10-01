@@ -1,7 +1,37 @@
 const path = require(`path`);
 const DottedMap = require("dotted-map").default;
+const levenshtein = require("fast-levenshtein");
+const cities = require("all-the-cities");
 
-const CURRENT_LOCATION = [48.856614, 2.3522219]; // lat, lng
+const MIN_POPULATION = 10_000;
+
+const findLocation = (city, countryCode) => {
+  const smallerCities = cities.filter((c) => {
+    if (countryCode && c.country !== countryCode) {
+      return false;
+    }
+
+    return c.population > MIN_POPULATION;
+  });
+  const citiesWithScore = smallerCities.map((c) => {
+    const score = levenshtein.get(c.name, city) - c.population / 5_000_000;
+    return {
+      name: c.name,
+      country: c.country,
+      score,
+      coords: c.loc.coordinates,
+    };
+  });
+  const sortedCities = citiesWithScore.sort((a, b) => a.score - b.score);
+
+  const [location] = sortedCities;
+  console.log(`Location found:`, location);
+
+  const [lng, lat] = location.coords;
+  return [lat, lng];
+};
+
+const CURRENT_LOCATION = findLocation("Paris", "FR");
 
 const getXYFromLatLng = ({ map, point }) => {
   const { height, width } = map.image;

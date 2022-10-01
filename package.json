@@ -15,8 +15,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "all-the-cities": "^3.1.0",
     "babel-plugin-styled-components": "^2.0.2",
     "dotted-map": "^2.1.1",
+    "fast-levenshtein": "^3.0.0",
     "gatsby": "^4.6.0",
     "gatsby-plugin-styled-components": "^5.6.0",
     "react": "^17.0.1",
