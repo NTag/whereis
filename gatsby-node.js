@@ -3,7 +3,7 @@ const DottedMap = require("dotted-map").default;
 const levenshtein = require("fast-levenshtein");
 const cities = require("all-the-cities");
 
-const MIN_POPULATION = 10_000;
+const MIN_POPULATION = 1_000;
 
 const findLocation = (city, countryCode) => {
   const smallerCities = cities.filter((c) => {
@@ -31,7 +31,7 @@ const findLocation = (city, countryCode) => {
   return [lat, lng];
 };
 
-const CURRENT_LOCATION = findLocation("Copenhagen", "DK");
+const CURRENT_LOCATION = findLocation("Leknes", "NO");
 
 const getXYFromLatLng = ({ map, point }) => {
   const { height, width } = map.image;
@@ -53,8 +53,8 @@ exports.createPages = async ({ actions }) => {
     height: 100,
     grid: "diagonal",
     region: {
-      lat: { min: 30, max: 66 },
-      lng: { min: -27.261267, max: 46 },
+      lat: { min: 20, max: 75 },
+      lng: { min: -40, max: 60 },
     },
   });
 
