@@ -31,7 +31,7 @@ const findLocation = (city, countryCode) => {
   return [lat, lng];
 };
 
-const CURRENT_LOCATION = findLocation("Leknes", "NO");
+const CURRENT_LOCATION = findLocation("Oslo", "NO");
 
 const getXYFromLatLng = ({ map, point }) => {
   const { height, width } = map.image;
